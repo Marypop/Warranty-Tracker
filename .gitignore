@@ -1,0 +1,6 @@
+#All the documents in this file are supposed to ignored
+*.zip
+*.theme.css
+*.css
+*.js
+*.DS_Store
