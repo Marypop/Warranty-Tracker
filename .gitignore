@@ -1,3 +1,6 @@
 #All the documents in this file are supposed to ignored
 *.zip
 *.DS_Store
+
+#This is a trial html form that should be ignored during checkins
+logform.html

@@ -61,46 +61,89 @@
                 </div>
             </div>
         </header>
-
         <!-- We will add the modal for Login/Register in this place -->
         <!-- Login/Register tabbed pane modal -->
         <div class="modal fade" id="loginregister">
-            <div class="modal-dialog">
+            <div class="modal-dialog modal-sm">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <!-- This remains as a placeholder if we need to add something in the modal header at some later point of time -->
-                    </div>
+                    <!-- <div class="modal-header">
+                        This remains as a placeholder if we need to add something in the modal header at some later point of time
+                    </div> -->
                     <div class="modal-body">
                         <!-- We need to insert a tabbed pane for login/register forms in this modal -->
                         <div role="tabpanel">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs" role="tablist">
                                 <li role="presentation" class="active">
-                                    <a aria-controls="home" role="tab" data-toggle="tab">Login</a>
+                                    <a href='#login'aria-controls="home" role="tab" data-toggle="tab">Login</a>
                                 </li>
                                 <li role="presentation">
-                                    <a aria-controls="tab" role="tab" data-toggle="tab">Register</a>
+                                    <a href='#register'aria-controls="tab" role="tab" data-toggle="tab">Register</a>
                                 </li>
                             </ul>
-                        
+                            
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div role="tabpanel" class="tab-pane active" id="login">
+                                    <hr>
                                     <!-- Create a form here to accept username and password -->
+                                    <form>
+                                        <div class='row'>
+                                            <div class='form-group col-md-12'>
+                                                <label for="usrEmail" class='control-label'>Email</label>
+                                                <input class='form-control'type="email" name="email" id="usremail" placeholder="Enter your address">
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            <div class='form-group col-md-12'>
+                                                <label for="usrPasswd" class='control-label'>Password</label>
+                                                <input class='form-control' type="password" name="passwd" id="usrpasswd" placeholder="Enter your password">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class='row'>
+                                            <div class='col-sm-2'>
+                                                <button type="button" class="btn btn-primary">Login</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                                 <div role="tabpanel" class="tab-pane" id="register">
+                                    <hr>
                                     <!-- Create a form here to register a user with email and password -->
+                                    <form>
+                                        <div class='row'>
+                                            <div class='form-group col-md-12'>
+                                                <label for="usrEmail" class='control-label'>Email</label>
+                                                <input class='form-control'type="email" name="email" id="usremail" placeholder="Enter your address">
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            <div class='form-group col-md-12'>
+                                                <label for="usrPasswd" class='control-label'>Password</label>
+                                                <input class='form-control' type="password" name="passwd" id="usrpasswd" placeholder="Enter your password">
+                                            </div>
+                                        </div>
+                                        <div class='row'>
+                                            <div class='form-group col-md-12'>
+                                                <label for='confPasswd' class='control-label'>Confirm Password</label>
+                                                <input class='form-control' type="password" name="cnfpasswd" id="confpasswd" placeholder="Confirm your password">
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class='row'>
+                                            <div class='col-sm-2'>
+                                                <button type="button" class="btn btn-primary">Register</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Submit</button>
-                    </div>
                 </div>
             </div>
         </div>
-
         <section id="contact">
             <div class="container">
                 <div class="row">
@@ -115,7 +158,6 @@
                 </div>
             </div>
         </section>
-
         <!-- jQuery -->
         <script src="js/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
