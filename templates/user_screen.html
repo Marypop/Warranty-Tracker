@@ -37,7 +37,93 @@
                 <!-- End of drop-down -->
             </div>
         </nav>
-    </body>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css">
-</html>
+        <!-- We would be adding the devices in tabbed panes for In-Warranty and Out-of-Warranty devices -->
+        <!-- We have to add tables in each of tabbed panes for displaying the devices -->
+        <div class='col-sm-offset-1 col-sm-10'>
+            <ul class='nav nav-tabs' role='tablist'>
+                <li role='presentation' class='active'><a href='#inwarr' aria-controls='inwarranty' role='tab' data-toggle='tab'>In Warranty</a></li>
+                <li role='presentation'><a href='#outofwarr' aria-controls='outofwarranty' role='tab' data-toggle='tab'>Out of Warranty</a></li>
+            </ul>
+            <hr>
+            <div class='tab-content'>
+                <div role='tabpanel' class='tab-pane active' id='inwarr'>
+                    <table class='table table-striped'>
+                        <thead>
+                            <tr>
+                                <th>col-header-0</th>
+                                <th>col-header-1</th>
+                                <th>col-header-2</th>
+                                <th>col-header-3</th>
+                                <th>col-header-4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>data-0</td>
+                                <td>data-1</td>
+                                <td>data-2</td>
+                                <td>data-3</td>
+                                <td>data-4</td>
+                            </tr>
+                            <tr>
+                                <td>data-0</td>
+                                <td>data-1</td>
+                                <td>data-2</td>
+                                <td>data-3</td>
+                                <td>data-4</td>
+                            </tr>
+                            <tr>
+                                <td>data-0</td>
+                                <td>data-1</td>
+                                <td>data-2</td>
+                                <td>data-3</td>
+                                <td>data-4</td>
+                            </tr>
+                            <tr>
+                                <td>data-0</td>
+                                <td>data-1</td>
+                                <td>data-2</td>
+                                <td>data-3</td>
+                                <td>data-4</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div role='tabpanel' class='tab-pane' id='outofwarr'>
+                    <table class='table table-striped'>
+                        <thead>
+                            <tr>
+                                <th>col-header-0</th>
+                                <th>col-header-1</th>
+                                <th>col-header-2</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>data-0</td>
+                                <td>data-1</td>
+                                <td>data-2</td>
+                            </tr>
+                            <tr>
+                                <td>data-0</td>
+                                <td>data-1</td>
+                                <td>data-2</td>
+                            </tr>
+                            <tr>
+                                <td>data-0</td>
+                                <td>data-1</td>
+                                <td>data-2</td>
+                            </tr>
+                            <tr>
+                                <td>data-0</td>
+                                <td>data-1</td>
+                                <td>data-2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </body>
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css">
+    </html>
