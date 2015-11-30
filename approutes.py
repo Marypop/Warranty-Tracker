@@ -10,8 +10,6 @@ from flask import render_template, request
 warApp = WarrantyApp()
 app = warApp.app
 
-print('Trying routes now')
-
 @app.route('/')
 def indexScreen():
     return(render_template('index.html'))
