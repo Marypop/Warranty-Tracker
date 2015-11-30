@@ -44,10 +44,6 @@
                         <li>
                             <a class="page-scroll" href="#contact">Contact</a>
                         </li>
-                        <li>
-                        <!-- This will bring up a tabbed Login and Register modal -->
-                            <a class="page-scroll" href="#logregModal">Login/Register</a>
-                        </li>
                     </ul>
                 </div>
                 <!-- /.navbar-collapse -->
@@ -61,10 +57,50 @@
                     <hr>
                     <p>Free yourself from hassles of managing warranties for every device you use, just store them in one place, <b>Stay calm..!!</b></p>
                     <!-- Following button should bring up the Modal for Registration only -->
-                    <a href="#register" class="btn btn-primary btn-xl">Register</a>
+                    <a type='button' class="btn btn-primary btn-xl" data-toggle='modal' data-target='#loginregister'>Login/Register</a>
                 </div>
             </div>
         </header>
+
+        <!-- We will add the modal for Login/Register in this place -->
+        <!-- Login/Register tabbed pane modal -->
+        <div class="modal fade" id="loginregister">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Login/Register</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- We need to insert a tabbed pane for login/register forms in this modal -->
+                        <div role="tabpanel">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#home" aria-controls="home" role="tab" data-toggle="tab">Login</a>
+                                </li>
+                                <li role="presentation">
+                                    <a href="#tab" aria-controls="tab" role="tab" data-toggle="tab">Register</a>
+                                </li>
+                            </ul>
+                        
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="login">
+                                    <!-- Create a form here to accept username and password -->
+                                </div>
+                                <div role="tabpanel" class="tab-pane" id="register">
+                                    <!-- Create a form here to register a user with email and password -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section id="contact">
             <div class="container">
@@ -80,6 +116,7 @@
                 </div>
             </div>
         </section>
+
         <!-- jQuery -->
         <script src="js/jquery.js"></script>
         <!-- Bootstrap Core JavaScript -->
