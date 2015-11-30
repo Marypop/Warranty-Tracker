@@ -137,12 +137,43 @@
             </div>
             <hr>
         </div>
+
         <!-- Modal to add new device -->
         <section>
             <div class='modal fade' id='adddevice'>
-                <div class='modal-dialog modal-sm'>
+                <div class='modal-dialog modal-md'>
                     <div class='modal-content'>
                         <div class='modal-body'>
+                            <form class='form-group'>
+                                <div class='row'>
+                                    <div class='form-group col-md-10'>
+                                        <label class='control-label'>Device Name</label>
+                                        <input class='form-control' type="text" name="dvcName" placeholder="Enter name for your device">
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='form-group col-md-10'>
+                                        <label class='control-label'>Device Type</label>
+                                        <input class='form-control' type="text" name="dvcType" placeholder="Enter device type (for e.g. Mobile, tablet, laptop etc.)">
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='form-group col-md-10'>
+                                        <label class='control-label'>Purchase date</label>
+                                        <input class='form-control' type="date" name="dvcPurDate">
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='form-group col-md-10'>
+                                        <label class='control-label'>Warranty Period</label>
+                                        <input class='form-control' type="text" name="dvcWarPeriod" placeholder="Please enter warranty period in months">
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type='button' class='btn btn-danger' id='btn_ok'>OK</button>
+                                    <button type='button' class='btn btn-danger' id='btn_can'>CANCEL</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -169,14 +200,14 @@
                 </div>
             </div>
         </section>
-
+        
         <!-- Modal to change password and edit settings -->
         <section>
             <div class='modal fade' id='settings'>
                 <div class='modal-dialog modal-md'>
                     <div class='modal-content'>
                         <div class='modal-body'>
-                            <form>
+                            <form class='form-group'>
                                 <div class='row'>
                                     <div class='form-group col-md-8'>
                                         <label class='control-label'>Current Password</label>
@@ -195,7 +226,7 @@
                                         <input class='form-control' type="password" name="confPasswd" placeholder="Confirm new password">
                                     </div>
                                 </div>
-                                <div class='form-group'>
+                                <div>
                                     <button type='button' class='btn btn-danger' id='btn_ok'>OK</button>
                                     <button type='button' class='btn btn-danger' id='btn_can'>CANCEL</button>
                                 </div>
@@ -205,7 +236,7 @@
                 </div>
             </div>
         </section>
-        
+
     </body>
     <!-- Latest compiled and minified CSS -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
