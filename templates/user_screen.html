@@ -23,14 +23,14 @@
                 <!-- Add device button -->
                 <div class='navbar-header'>
                     <form class='navbar-form'>
-                        <button type="button" class="btn btn-warning">Add a device</button>
+                        <button type="button" data-toggle='modal' data-target='#adddevice' class="btn btn-warning">Add a device</button>
                     </form>
                 </div>
                 <!-- End of Add device button -->
                 <!-- Buttons for Settings and Logging out a User -->
                 <div class='nav navbar-nav navbar-right'>
                     <form class='navbar-form'>
-                        <button type="button" class="btn btn-warning">Settings</button>
+                        <button type="button" class="btn btn-warning" data-toggle='modal' data-target='#settings'>Settings</button>
                         <button type="button" class="btn btn-danger">Logout</button>
                     </form>
                 </div>
@@ -53,9 +53,9 @@
                                 <th>No.</th>
                                 <th>Device Name</th>
                                 <th>Device Type</th>
+                                <th>Purchase Date</th>
                                 <th>Warranty Date</th>
                                 <th></th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -64,28 +64,32 @@
                                 <td>data-1</td>
                                 <td>data-2</td>
                                 <td>data-3</td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                <td>data-4</td>
+                                <td><button type="button" class="btn btn-danger" data-toggle='modal' data-target='#deldevice'>Delete</button></td>
                             </tr>
                             <tr>
                                 <td>data-0</td>
                                 <td>data-1</td>
                                 <td>data-2</td>
                                 <td>data-3</td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                <td>data-4</td>
+                                <td><button type="button" class="btn btn-danger" data-toggle='modal' data-target='#deldevice'>Delete</button></td>
                             </tr>
                             <tr>
                                 <td>data-0</td>
                                 <td>data-1</td>
                                 <td>data-2</td>
                                 <td>data-3</td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                <td>data-4</td>
+                                <td><button type="button" class="btn btn-danger" data-toggle='modal' data-target='#deldevice'>Delete</button></td>
                             </tr>
                             <tr>
                                 <td>data-0</td>
                                 <td>data-1</td>
                                 <td>data-2</td>
                                 <td>data-3</td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                <td>data-4</td>
+                                <td><button type="button" class="btn btn-danger" data-toggle='modal' data-target='#deldevice'>Delete</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -97,6 +101,7 @@
                                 <th>No.</th>
                                 <th>Device Name</th>
                                 <th>Device Type</th>
+                                <th>Purchase Date</th>
                                 <th>Warranty Date</th>
                                 <th></th>
                             </tr>
@@ -107,21 +112,24 @@
                                 <td>data-1</td>
                                 <td>data-2</td>
                                 <td>data-3</td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                <td>data-4</td>
+                                <td><button type="button" class="btn btn-danger" data-toggle='modal' data-target='#deldevice'>Delete</button></td>
                             </tr>
                             <tr>
                                 <td>data-0</td>
                                 <td>data-1</td>
                                 <td>data-2</td>
                                 <td>data-3</td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                <td>data-4</td>
+                                <td><button type="button" class="btn btn-danger" data-toggle='modal' data-target='#deldevice'>Delete</button></td>
                             </tr>
                             <tr>
                                 <td>data-0</td>
                                 <td>data-1</td>
                                 <td>data-2</td>
                                 <td>data-3</td>
-                                <td><button type="button" class="btn btn-danger">Delete</button></td>
+                                <td>data-4</td>
+                                <td><button type="button" class="btn btn-danger" data-toggle='modal' data-target='#deldevice'>Delete</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -129,6 +137,75 @@
             </div>
             <hr>
         </div>
+        <!-- Modal to add new device -->
+        <section>
+            <div class='modal fade' id='adddevice'>
+                <div class='modal-dialog modal-sm'>
+                    <div class='modal-content'>
+                        <div class='modal-body'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Modal to delete a device -->
+        <section>
+            <div class='modal fade' id='deldevice'>
+                <div class='modal-dialog modal-md'>
+                    <div class='modal-content'>
+                        <div class='modal-body'>
+                            <form class='form-group'>
+                                <div class='alert alert-danger' role='warning'>
+                                    <strong>Warning! You are about to delete a device. Are you sure ?</strong>
+                                </div>
+                                <div>
+                                    <button type='button' class='btn btn-danger' id='btn_ok'>OK</button>
+                                    <button type='button' class='btn btn-danger' id='btn_can'>CANCEL</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal to change password and edit settings -->
+        <section>
+            <div class='modal fade' id='settings'>
+                <div class='modal-dialog modal-md'>
+                    <div class='modal-content'>
+                        <div class='modal-body'>
+                            <form>
+                                <div class='row'>
+                                    <div class='form-group col-md-8'>
+                                        <label class='control-label'>Current Password</label>
+                                        <input class='form-control' type="password" name="oldPasswd" placeholder="Enter current password">
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='form-group col-md-8'>
+                                        <label class='control-label'>New Password</label>
+                                        <input class='form-control' type="password" name="newPasswd" placeholder="Enter new password">
+                                    </div>
+                                </div>
+                                <div class='row'>
+                                    <div class='form-group col-md-8'>
+                                        <label class='control-label'>Confirm Password</label>
+                                        <input class='form-control' type="password" name="confPasswd" placeholder="Confirm new password">
+                                    </div>
+                                </div>
+                                <div class='form-group'>
+                                    <button type='button' class='btn btn-danger' id='btn_ok'>OK</button>
+                                    <button type='button' class='btn btn-danger' id='btn_can'>CANCEL</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
     </body>
     <!-- Latest compiled and minified CSS -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
