@@ -1,12 +1,43 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <link rel="stylesheet" href="">
-</head>
-<body>
-    <h2>This is homescreen for a user: {{user_name}} </h2>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-default">
+            <div class="container-fluid">
+                <!-- Brand header for the website -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><b>TRACK-A-RANTY</b></a>
+                </div>
+                <!-- End of brand header for the website -->
+                <!-- Add device button -->
+                <div class='navbar-header'>
+                    <form class='navbar-form'>
+                        <button type="button" class="btn btn-warning">Add a device</button>
+                    </form>
+                </div>
+                <!-- End of Add device button -->
+                <!-- Buttons for Settings and Logging out a User -->
+                <div class='nav navbar-nav navbar-right'>
+                    <form class='navbar-form'>
+                        <button type="button" class="btn btn-danger">Settings</button>
+                        <button type="button" class="btn btn-danger">Logout</button>
+                    </form>
+                </div>
+                <!-- End of drop-down -->
+            </div>
+        </nav>
+    </body>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/paper/bootstrap.min.css">
 </html>
