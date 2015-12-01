@@ -1,7 +1,6 @@
 #!/usr/local/bin/python3
 
-from flask import render_template
-from flask.ext.login import UserMixin
+from flask import render_template, session
 from pymongo import MongoClient, errors
 from werkzeug.security import generate_password_hash, check_password_hash
 

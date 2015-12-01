@@ -22,14 +22,14 @@
                 <!-- End of brand header for the website -->
                 <!-- Add device button -->
                 <div class='navbar-header'>
-                    <form class='navbar-form' action='addnewdevice' method='post'>
-                        <button type="submit" data-toggle='modal' data-target='#adddevice' class="btn btn-warning">Add a device</button>
+                    <form class='navbar-form'>
+                        <button type="button" data-toggle='modal' data-target='#adddevice' class="btn btn-warning">Add a device</button>
                     </form>
                 </div>
                 <!-- End of Add device button -->
                 <!-- Buttons for Settings and Logging out a User -->
                 <div class='nav navbar-nav navbar-right'>
-                    <form class='navbar-form'>
+                    <form class='navbar-form' action='logout' method='post'>
                         <button type="submit" class="btn btn-danger">Logout</button>
                     </form>
                 </div>
@@ -147,7 +147,7 @@
                 <div class='modal-dialog modal-md'>
                     <div class='modal-content'>
                         <div class='modal-body'>
-                            <form class='form-group'>
+                            <form class='form-group' action='addnewdevice' method='post'>
                                 <div class='row'>
                                     <div class='form-group col-md-10'>
                                         <label class='control-label'>Device Name</label>
@@ -173,7 +173,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <button type='button' class='btn btn-danger' id='btn_ok'>OK</button>
+                                    <button type='submit' class='btn btn-danger' id='btn_ok'>OK</button>
                                     <button type='button' class='btn btn-danger' id='btn_can'>CANCEL</button>
                                 </div>
                             </form>
