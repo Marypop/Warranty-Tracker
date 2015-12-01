@@ -53,7 +53,7 @@ class AppUserDB():
         else:
             saved_pwd = doc['password']
 
-            if(check_password_hash(saved_pwd, pwd)):
-                return(True)
-            else:
-                return(False)
+        if(check_password_hash(saved_pwd, pwd)):
+            return(True)
+        else:
+            return(False)
