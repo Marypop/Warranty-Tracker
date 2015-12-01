@@ -22,16 +22,20 @@
                 <!-- End of brand header for the website -->
                 <!-- Add device button -->
                 <div class='navbar-header'>
-                    <form class='navbar-form'>
-                        <button type="button" data-toggle='modal' data-target='#adddevice' class="btn btn-warning">Add a device</button>
+                    <form class='navbar-form' action='addnewdevice' method='post'>
+                        <button type="submit" data-toggle='modal' data-target='#adddevice' class="btn btn-warning">Add a device</button>
                     </form>
                 </div>
                 <!-- End of Add device button -->
                 <!-- Buttons for Settings and Logging out a User -->
                 <div class='nav navbar-nav navbar-right'>
                     <form class='navbar-form'>
-                        <button type="button" class="btn btn-warning" data-toggle='modal' data-target='#settings'>Settings</button>
-                        <button type="button" class="btn btn-danger">Logout</button>
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+                </div>
+                <div class='nav navbar-nav navbar-right'>
+                    <form class='navbar-form'>
+                        <button type="submit" class="btn btn-warning" data-toggle='modal' data-target='#settings'>Settings</button>
                     </form>
                 </div>
                 <!-- End of drop-down -->
@@ -137,7 +141,6 @@
             </div>
             <hr>
         </div>
-
         <!-- Modal to add new device -->
         <section>
             <div class='modal fade' id='adddevice'>
@@ -200,7 +203,6 @@
                 </div>
             </div>
         </section>
-
         <!-- Modal to change password and edit settings -->
         <section>
             <div class='modal fade' id='settings'>
@@ -236,7 +238,6 @@
                 </div>
             </div>
         </section>
-
     </body>
     <!-- Latest compiled and minified CSS -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
