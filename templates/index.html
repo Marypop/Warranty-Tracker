@@ -88,6 +88,7 @@
                                     <hr>
                                     <!-- Create a form here to accept username and password -->
                                     <form action="/login" method='post' name='login_form'>
+
                                         <div class='row'>
                                             <div class='form-group col-md-12'>
                                                 <label for="usrEmail" class='control-label'>Email</label>
@@ -111,7 +112,7 @@
                                 <div role="tabpanel" class="tab-pane" id="register">
                                     <hr>
                                     <!-- Create a form here to register a user with email and password -->
-                                    <form>
+                                    <form action='register' method='post'>
                                         <div class='row'>
                                             <div class='form-group col-md-12'>
                                                 <label for="usrEmail" class='control-label'>Email</label>
@@ -133,7 +134,7 @@
                                         <hr>
                                         <div class='row'>
                                             <div class='col-sm-2'>
-                                                <button type="button" class="btn btn-primary">Register</button>
+                                                <button type="submit" class="btn btn-primary">Register</button>
                                             </div>
                                         </div>
                                     </form>

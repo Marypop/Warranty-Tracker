@@ -26,27 +26,34 @@ class AppUserDB():
         try:
             doc = collection.find_one({'userid' : user})
         except errors.PyMongoError as err:
-            print('Could not connect to specified database')
+            print('Could not connect to specified database', err)
+
+        print(doc)
 
         if doc is None:
-            collection.insert({'userid': user, 'password': pwd})
+            try:
+                result = collection.insert({'userid': user, 'password': pwd})
+            except errors.PyMongoError as err:
+                print('Could not connect to specified database', err)
         else:
-            print('User already present in the database')
+            return
+
+        return(result)
 
 
-def validate_user(userid, pwd): 
-    collection = db.userdb
-    try:
-        doc = collection.find_one({'userid': userid})
-    except errors.PyMongoError as err:
-        print('Coud not connect to specified database')
+    def validate_user(self, userid, pwd): 
+        collection = db.userdb
+        try:
+            doc = collection.find_one({'userid': userid})
+        except errors.PyMongoError as err:
+            print('Coud not connect to specified database', err)
 
-    if doc is None:
-        print('No such user present')
-    else:
-        saved_pwd = doc['password']
-        print(doc['password'])
-        if(check_password_hash(saved_pwd, pwd)):
-            return(True)
+        if doc is None:
+            print('No such user present')
         else:
-            return(False)
+            saved_pwd = doc['password']
+
+            if(check_password_hash(saved_pwd, pwd)):
+                return(True)
+            else:
+                return(False)
