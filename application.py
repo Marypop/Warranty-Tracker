@@ -8,7 +8,6 @@ class WarrantyApp:
     def __init__(self):
         self.app = Flask(__name__)
         self.wsgi_app = self.app.wsgi_app
-        
 
 
 # Start the App
