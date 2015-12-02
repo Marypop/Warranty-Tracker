@@ -45,9 +45,9 @@ class AppUserDB():
 
 
     def validate_user(self, userid, pwd): 
-        collection = db.userdb
+        usercollection = db.userdb
         try:
-            doc = collection.find_one({'userid': userid})
+            doc = usercollection.find_one({'userid': userid})
         except errors.PyMongoError as err:
             print('Coud not connect to specified database', err)
 
