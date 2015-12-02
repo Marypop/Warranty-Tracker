@@ -1,10 +1,8 @@
 #!/usr/local/bin/python3
 
-from flask import render_template, session
-#!/usr/local/bin/python3
-
 __author__ = 'shreyas'
 
+from flask import render_template, session
 from pymongo import MongoClient, errors
 from werkzeug.security import generate_password_hash, check_password_hash
 from appUserSess import *
