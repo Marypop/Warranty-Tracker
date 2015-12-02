@@ -26,11 +26,8 @@ def index():
 # This route will get executed while user opens up the homepage for the application
 @app.route('/home')
 def home():
-    secKey = str(app.secret_key)
-    userid = request.cookies[secKey]
-    
-
     return(render_template('user_screen.html'))
+
 
 # Routes to Log-in existing, Register new user and logging out of the application
 @app.route('/login', methods=['POST'])
@@ -50,9 +47,7 @@ def userAppLogin():
     else:
         redirect_url = 'index'
 
-    seckey = str(app.secret_key)
     response = redirect(url_for(redirect_url), code=302)
-    response.set_cookie(key=seckey, value=userid)
     return(response)
 
 
