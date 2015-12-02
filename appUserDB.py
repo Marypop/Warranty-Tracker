@@ -1,13 +1,19 @@
 #!/usr/local/bin/python3
 
 from flask import render_template, session
+#!/usr/local/bin/python3
+
+__author__ = 'shreyas'
+
 from pymongo import MongoClient, errors
 from werkzeug.security import generate_password_hash, check_password_hash
+from appUserSess import *
 
 
 # Establish a connection with the database, Later we might add this code __init__ with Try...Except for connection
 conn = MongoClient(host='localhost',port=27017)
 db = conn.test
+session = AppUserSession(db)
 
 class AppUserDB():
     # Initialize the user data with user id and password
@@ -20,18 +26,16 @@ class AppUserDB():
         user = self.userid
         pwd = self.hashPwd
 
-        collection = db.userdb
+        usercollection = db.userdb
 
         try:
-            doc = collection.find_one({'userid' : user})
+            doc = usercollection.find_one({'userid' : user})
         except errors.PyMongoError as err:
             print('Could not connect to specified database', err)
 
-        print(doc)
-
         if doc is None:
             try:
-                result = collection.insert({'userid': user, 'password': pwd})
+                result = usercollection.insert({'userid': user, 'password': pwd})
             except errors.PyMongoError as err:
                 print('Could not connect to specified database', err)
         else:

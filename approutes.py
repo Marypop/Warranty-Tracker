@@ -1,19 +1,20 @@
 #!/usr/local/bin/python3
 
+__author__ = 'shreyas'
 
 # This file should contain all the routes that will be called in the warranty tracker web-application
+
+import os
+
 from application import WarrantyApp
 from flask import render_template, request, url_for, redirect, Response, session
 from appUserDB import *
-import os
+from appUserSess import *
 
-# Generate a random secret key and store it with application
-secret_key = os.urandom(32)
 
 # Application object initialization
 warApp = WarrantyApp()
 app = warApp.app
-warApp.app.secret_key = secret_key
 
 # Default home screen route
 # This will be the home screen of the app
@@ -26,7 +27,15 @@ def index():
 # This route will get executed while user opens up the homepage for the application
 @app.route('/home')
 def home():
-    return(render_template('user_screen.html'))
+    session_id = request.cookies['session']
+    user = session.getSessionUserInfo(session_id)
+
+    if user is None:
+        template = 'index.html'
+    else:
+        template = 'user_screen.html'
+
+    return(render_template(template))
 
 
 # Routes to Log-in existing, Register new user and logging out of the application
@@ -43,11 +52,13 @@ def userAppLogin():
 
     if can_login:
         redirect_url = 'home'
-        session['user'] = userid
+        session_id = session.startUserSession(userid)
     else:
         redirect_url = 'index'
 
     response = redirect(url_for(redirect_url), code=302)
+    response.set_cookie('session', session_id)
+
     return(response)
 
 
@@ -65,18 +76,31 @@ def addNewAppUser():
 
     created_usr = appusr.add_new_user()
 
-    if created_usr is not None:
-        redirect_url = 'home'
-    else:
+    if created_usr is None:
         redirect_url = 'index'
+    else:
+        redirect_url = 'home'
+        session_id = session.startUserSession(userid)
 
-    return(redirect(url_for(redirect_url), code=302))
+    print(session_id)
+
+    response = redirect(url_for(redirect_url), code=302)
+
+    response.set_cookie('session', value=session_id)
+
+    return(response)
 
 
 @app.route('/logout', methods=['POST'])
 def usrLogout():
-    session.clear()
-    return(redirect('index', code=302))
+    session_id = request.cookies['session']
+    session.removeUserSession(session_id)
+
+    response = redirect('index', code=302)
+    response.set_cookie('session', '')
+
+    return(response)
+
 
 # Routes to Add/Delete new devices for a given user
 @app.route('/addnewdevice', methods=['POST'])
