@@ -40,9 +40,11 @@ def home():
     if user is None:
         template = 'index.html'
     else:
+        # Now if there is a user before rendering the template we would like to populate the table
+        table = populate_user_device_table(user, db)
         template = 'user_screen.html'
 
-    return(render_template(template))
+    return(render_template(template, table=table))
 
 
 # Routes to Log-in existing, Register new user and logging out of the application
@@ -87,14 +89,12 @@ def addNewAppUser():
 
     if created_usr is None:
         redirect_url = 'index'
+        session_id = ''
     else:
         redirect_url = 'home'
         session_id = session.startUserSession(userid)
 
-    print(session_id)
-
     response = redirect(url_for(redirect_url), code=302)
-
     response.set_cookie('session', value=session_id)
 
     return(response)
@@ -128,8 +128,7 @@ def addNewDevice():
 
     appuserdevice = AppUserDeviceDB(userid, dvcName, dvcType, dvcPurDate, dvcWarPeriod)
 
-    device_name = appuserdevice.addNewUserDevice(db)
-    print(device_name)
+    appuserdevice.addNewUserDevice(db)
 
     return(redirect(url_for('home'), code=302))
 
