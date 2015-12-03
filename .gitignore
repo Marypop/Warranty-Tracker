@@ -4,7 +4,6 @@
 
 #This is a trial html form that should be ignored during checkins
 logform.html
-table.html
 
 #Python compiled modules won’t be checked-in
 __pycache__
