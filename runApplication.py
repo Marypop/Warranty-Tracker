@@ -3,7 +3,7 @@
 __author__ = 'shreyas'
 
 from flask import Flask
-from approutes import *
+from appRoutes import *
 
 class WarrantyApp:
     # Initialize the class instance

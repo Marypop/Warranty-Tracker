@@ -7,7 +7,7 @@ __author__ = 'shreyas'
 import os, dateutil.parser
 
 from datetime import datetime
-from application import WarrantyApp
+from runApplication import WarrantyApp
 from flask import render_template, request, url_for, redirect, Response, session
 from appUserDB import *
 from appUserSess import *
@@ -128,7 +128,7 @@ def addNewDevice():
 
     appuserdevice = AppUserDeviceDB(userid, dvcName, dvcType, dvcPurDate, dvcWarPeriod)
 
-    device_name = appuserdevice.addNewUserDevice(db)
+    device_name = appuserdevice.addNewUserDevice(db, userid)
     print(device_name)
 
     return(redirect(url_for('home'), code=302))

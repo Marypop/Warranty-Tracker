@@ -4,6 +4,7 @@ __author__ = 'shreyas'
 
 
 from pymongo import errors
+from datetime import datetime, timedelta
 
 
 class AppUserDeviceDB():
@@ -17,21 +18,36 @@ class AppUserDeviceDB():
 
 
     # Method to add new device to db
-    def addNewUserDevice(self, db):
+    def addNewUserDevice(self, db, userid):
         deviceCollection = db.deviceCollection
 
-        # Try to check if device with same exists already in the db in such cases prevent addition of devices
+        warrantyDate = calculate_warranty_date(self.devicePurchaseDate, self.warrantyPeriod)
+
         try:
-            device = deviceCollection.find_one({'_id' : self.deviceName})
+            device = deviceCollection.find_one({'_id' : self.deviceName, 'userid' : userid})
         except errors.PyMongoError as deviceNameError:
             print('No such collection exists or database connection issue', deviceNameError)
 
         if device is None:
-            deviceAttr = { '_id' : self.deviceName, 'device_type' : self.deviceType, 
-                           'purchase_date' : self.devicePurchaseDate }
+            devices = [{'device_name'   : self.deviceName,
+                        'device_type'   : self.deviceType, 
+                        'purchase_date' : self.devicePurchaseDate,
+                        'warranty_date' : warrantyDate}]
+
+            deviceAttr = { '_id' : userid, 'device' : devices }
+                           
             try:
                 name = deviceCollection.insert(deviceAttr)
             except errors.CollectionInvalid as collectionErr:
                 print('No such collection exists', collectionErr)
 
         return(name)
+
+
+
+def calculate_warranty_date(purchaseDate, warrantyPeriod):
+    # Convert the warranty period from months to weeks
+    convertedWeeks = (int(warrantyPeriod)/12) * 52
+    warrantyDate = purchaseDate + timedelta(weeks=convertedWeeks)
+
+    return(warrantyDate)
