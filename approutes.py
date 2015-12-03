@@ -4,17 +4,24 @@ __author__ = 'shreyas'
 
 # This file should contain all the routes that will be called in the warranty tracker web-application
 
-import os
+import os, dateutil.parser
 
+from datetime import datetime
 from application import WarrantyApp
 from flask import render_template, request, url_for, redirect, Response, session
 from appUserDB import *
 from appUserSess import *
+from appUserDevciceDB import *
 
 
 # Application object initialization
 warApp = WarrantyApp()
 app = warApp.app
+
+# Establish a connection with the database, Later we might add this code __init__ with Try...Except for connection
+conn = MongoClient(host='localhost',port=27017)
+db = conn.test
+session = AppUserSession(db)
 
 # Default home screen route
 # This will be the home screen of the app
@@ -48,7 +55,7 @@ def userAppLogin():
         pwd = request.form['passwd']
         appuser = AppUserDB(userid, pwd)
 
-    can_login = appuser.validate_user(userid, pwd)
+    can_login = appuser.validate_user(userid, pwd, db)
 
     if can_login:
         redirect_url = 'home'
@@ -74,7 +81,7 @@ def addNewAppUser():
     else:
         return(redirect(url_for('index'), code=302))
 
-    created_usr = appusr.add_new_user()
+    created_usr = appusr.add_new_user(db)
 
     if created_usr is None:
         redirect_url = 'index'
@@ -111,7 +118,18 @@ def addNewDevice():
         dvcPurDate = request.form['dvcPurDate']
         dvcWarPeriod = request.form['dvcWarPeriod']
 
-    print(dvcName, dvcType, dvcPurDate, dvcWarPeriod)
+    # Convert date time string to ISODate.
+    dvcPurDate = dateutil.parser.parse(dvcPurDate)
+
+    print(dvcPurDate)
+
+    session_id = request.cookies['session']
+    userid = session.getSessionUserInfo(session_id)
+
+    appuserdevice = AppUserDeviceDB(userid, dvcName, dvcType, dvcPurDate, dvcWarPeriod)
+
+    device_name = appuserdevice.addNewUserDevice(db)
+    print(device_name)
 
     return(redirect(url_for('home'), code=302))
 
