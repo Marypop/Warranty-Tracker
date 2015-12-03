@@ -16,19 +16,19 @@ class AppUserDB():
 
     # Methods to check the validate user and password
     def add_new_user(self, db):
-        user = self.userid
+        userid = self.userid
         pwd = self.hashPwd
 
         usercollection = db.userdb
 
         try:
-            user = usercollection.find_one({'userid' : user})
+            user = usercollection.find_one({'_id' : userid})
         except errors.PyMongoError as err:
             print('Could not connect to specified database', err)
 
         if user is None:
             try:
-                result = usercollection.insert({'userid': user, 'password': pwd})
+                result = usercollection.insert({'_id': userid, 'password': pwd})
             except errors.PyMongoError as err:
                 print('Could not connect to specified database', err)
         else:
@@ -40,12 +40,13 @@ class AppUserDB():
     def validate_user(self, userid, pwd, db): 
         usercollection = db.userdb
         try:
-            user = usercollection.find_one({'userid': userid})
+            user = usercollection.find_one({'_id': userid})
         except errors.PyMongoError as err:
             print('Coud not connect to specified database', err)
 
         if user is None:
             print('No such user present')
+            saved_pwd = ''
         else:
             saved_pwd = user['password']
 

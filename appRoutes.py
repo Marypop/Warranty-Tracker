@@ -62,6 +62,7 @@ def userAppLogin():
         session_id = session.startUserSession(userid)
     else:
         redirect_url = 'index'
+        session_id = ''
 
     response = redirect(url_for(redirect_url), code=302)
     response.set_cookie('session', session_id)
@@ -78,6 +79,7 @@ def addNewAppUser():
 
     if(pwd == conf_pwd):
         appusr = AppUserDB(userid, pwd)
+        print(appusr.userid)
     else:
         return(redirect(url_for('index'), code=302))
 
@@ -121,14 +123,12 @@ def addNewDevice():
     # Convert date time string to ISODate.
     dvcPurDate = dateutil.parser.parse(dvcPurDate)
 
-    print(dvcPurDate)
-
     session_id = request.cookies['session']
     userid = session.getSessionUserInfo(session_id)
 
     appuserdevice = AppUserDeviceDB(userid, dvcName, dvcType, dvcPurDate, dvcWarPeriod)
 
-    device_name = appuserdevice.addNewUserDevice(db, userid)
+    device_name = appuserdevice.addNewUserDevice(db)
     print(device_name)
 
     return(redirect(url_for('home'), code=302))

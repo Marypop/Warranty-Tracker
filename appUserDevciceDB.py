@@ -18,28 +18,36 @@ class AppUserDeviceDB():
 
 
     # Method to add new device to db
-    def addNewUserDevice(self, db, userid):
+    def addNewUserDevice(self, db):
+
         deviceCollection = db.deviceCollection
+        find_query = {'_id': self.userid}
 
         warrantyDate = calculate_warranty_date(self.devicePurchaseDate, self.warrantyPeriod)
 
+        device = [{ 'device_name'   : self.deviceName,
+                    'device_type'   : self.deviceType, 
+                    'purchase_date' : self.devicePurchaseDate,
+                    'warranty_date' : warrantyDate}]
+
+
         try:
-            device = deviceCollection.find_one({'_id' : self.deviceName, 'userid' : userid})
+            userDevices = deviceCollection.find_one(find_query)
         except errors.PyMongoError as deviceNameError:
             print('No such collection exists or database connection issue', deviceNameError)
 
-        if device is None:
-            devices = [{'device_name'   : self.deviceName,
-                        'device_type'   : self.deviceType, 
-                        'purchase_date' : self.devicePurchaseDate,
-                        'warranty_date' : warrantyDate}]
-
-            deviceAttr = { '_id' : userid, 'device' : devices }
-                           
+        if userDevices is None:
+            deviceAttr = { '_id' : self.userid, 'devices' : device }
             try:
                 name = deviceCollection.insert(deviceAttr)
             except errors.CollectionInvalid as collectionErr:
                 print('No such collection exists', collectionErr)
+        else:
+            update_query = {'$addToSet' : {'devices': device}}
+            try:
+                name = deviceCollection.find_one_and_update(find_query, update_query)
+            except errors.PyMongoError as Err:
+                print('Device was not inserted', Err)
 
         return(name)
 
