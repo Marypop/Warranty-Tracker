@@ -114,8 +114,33 @@ def usrLogout():
 
     return(response)
 
+# Route to update user password
+@app.route('/settings', methods=['POST'])
+def updateUsrPassword():
+    if request.method == 'POST':
+        cur_passwd = request.form['oldPasswd']
+        new_passwd = request.form['newPasswd']
+        conf_new_passwd = request.form['confPasswd']
 
-# Routes to Add/Delete new devices for a given user
+    session_id = request.cookies['session']
+    userid = session.getSessionUserInfo(session_id)
+
+    # We can use validate_user() to know whether current password is correct
+    cur_user = AppUserDB(userid, cur_passwd)
+    is_correct_passwd = cur_user.validate_user(userid, cur_passwd, db)
+
+    if not is_correct_passwd:
+        return(redirect(url_for('home'), code=302))
+
+    if new_passwd == conf_new_passwd:
+        cur_user.update_user_pwd(userid, new_passwd, db)
+        
+    return(redirect(url_for('home'), code=302))
+
+
+
+
+# Routes to Add new devices for a given user
 @app.route('/addnewdevice', methods=['POST'])
 def addNewDevice():
     if(request.method == 'POST'):

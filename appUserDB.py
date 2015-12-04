@@ -28,7 +28,7 @@ class AppUserDB():
 
         if user is None:
             try:
-                result = usercollection.insert({'_id': userid, 'password': pwd})
+                result = usercollection.insert({'_id' : userid, 'password' : pwd})
             except errors.PyMongoError as err:
                 print('Could not connect to specified database', err)
         else:
@@ -39,8 +39,9 @@ class AppUserDB():
 
     def validate_user(self, userid, pwd, db): 
         usercollection = db.userdb
+        
         try:
-            user = usercollection.find_one({'_id': userid})
+            user = usercollection.find_one({'_id' : userid})
         except errors.PyMongoError as err:
             print('Coud not connect to specified database', err)
 
@@ -54,3 +55,17 @@ class AppUserDB():
             return(True)
         else:
             return(False)
+
+
+    def update_user_pwd(self, userid, new_pwd, db):
+        userCollection = db.userdb
+
+        updated_pwd = generate_password_hash(new_pwd)
+
+        # Since we have validated password already, which implies user object won't be None
+        try:
+            result = userCollection.find_one_and_update({'_id' : userid}, {'$set' : {'password' : updated_pwd}})
+        except errors.PyMongoError as err:
+            print('Coud not connect to specified database', err)
+
+        return(result)

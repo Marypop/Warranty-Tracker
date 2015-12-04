@@ -35,12 +35,13 @@
                 </div>
                 <div class='nav navbar-nav navbar-right'>
                     <form class='navbar-form'>
-                        <button type="submit" class="btn btn-warning" data-toggle='modal' data-target='#settings'>Settings</button>
+                        <button type="button" class="btn btn-warning" data-toggle='modal' data-target='#settings'>Settings</button>
                     </form>
                 </div>
                 <!-- End of drop-down -->
             </div>
         </nav>
+
         <!-- We would be adding the devices in tabbed panes for In-Warranty and Out-of-Warranty devices -->
         <!-- We have to add tables in each of tabbed panes for displaying the devices -->
         <div class='col-sm-offset-1 col-sm-10'>
@@ -52,6 +53,7 @@
             {{ out_warranty_table }}
             <hr>
         </div>
+
         <!-- Modal to add new device -->
         <section>
             <div class='modal fade' id='adddevice'>
@@ -85,7 +87,6 @@
                                 </div>
                                 <div>
                                     <button type='submit' class='btn btn-danger' id='btn_ok'>OK</button>
-                                    <button type='button' class='btn btn-danger' id='btn_can'>CANCEL</button>
                                 </div>
                             </form>
                         </div>
@@ -94,33 +95,13 @@
             </div>
         </section>
         
-        <!-- Modal to delete a device -->
-        <section>
-            <div class='modal fade' id='deldevice'>
-                <div class='modal-dialog modal-md'>
-                    <div class='modal-content'>
-                        <div class='modal-body'>
-                            <form class='form-group'>
-                                <div class='alert alert-danger' role='warning'>
-                                    <strong>Warning! You are about to delete a device. Are you sure ?</strong>
-                                </div>
-                                <div>
-                                    <button type='button' class='btn btn-danger' id='btn_ok'>OK</button>
-                                    <button type='button' class='btn btn-danger' id='btn_can'>CANCEL</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- Modal to change password and edit settings -->
         <section>
             <div class='modal fade' id='settings'>
                 <div class='modal-dialog modal-md'>
                     <div class='modal-content'>
                         <div class='modal-body'>
-                            <form class='form-group'>
+                            <form class='form-group' action='settings' method='post'>
                                 <div class='row'>
                                     <div class='form-group col-md-8'>
                                         <label class='control-label'>Current Password</label>
@@ -140,8 +121,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <button type='button' class='btn btn-danger' id='btn_ok'>OK</button>
-                                    <button type='button' class='btn btn-danger' id='btn_can'>CANCEL</button>
+                                    <button type='submit' class='btn btn-danger' id='btn_ok'>OK</button>
                                 </div>
                             </form>
                         </div>
