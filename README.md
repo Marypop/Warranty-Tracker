@@ -11,8 +11,8 @@ To run or develop further, you will have to fulfill following dependencies,
 - Pymongo (pip(x.x) install pymongo)
  { To work with MongoDB, latest version would be preferred more details on http://api.mongodb.org/python/current/}
  
- Currently, Application is configured to work on `host=localhost port=5555`, in case of MongoDB `port=27017` with vanilla configuration.
- For MongoDB, users are stored in the 'userdb' collections, devices in 'deviceCollection' and sessions in 'session'
+ Currently, Application is configured to work on `host=localhost port=5555`.
+ For MongoDB, `db: 'test'` `Collection: userdb, deviceCollection, session` mongo service running with vanilla configuration.
  
  At present, application does not show any errors or flash messages on bad user input or some other unexpected workflows, which is one
  of the areas for improvement, as well as a functionality to delete to the devices from the user profile and pagination.
