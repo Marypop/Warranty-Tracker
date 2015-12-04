@@ -44,22 +44,12 @@
         <!-- We would be adding the devices in tabbed panes for In-Warranty and Out-of-Warranty devices -->
         <!-- We have to add tables in each of tabbed panes for displaying the devices -->
         <div class='col-sm-offset-1 col-sm-10'>
-            <ul class='nav nav-tabs' role='tablist'>
-                <li role='presentation' class='active'><a href='#inwarr' aria-controls='inwarr' role='tab' data-toggle='tab'>In Warranty</a></li>
-                <li role='presentation'><a href='#outofwarr' aria-controls='outofwarr' role='tab' data-toggle='tab'>Out of Warranty</a></li>
-            </ul>
             <hr>
-            <div>
-                <div class='tab-content'>
-                    <div role='tabpanel' class='tab-pane fade in active' id='inwarr'>
-                        <!-- {% include 'table.html' %} -->
-                        {{ table }}
-                    </div>
-                    <div role='tabpanel' class='tab-pane fade in' id='outofwarr'>
-                        <!-- {% include 'table.html' %} -->
-                    </div>
-                </div>
-            </div>
+            <h4><span class='label label-success'>In Warranty Devices</span></h4>
+            {{ in_warranty_table }}
+            <hr>
+            <h4><span class='label label-danger'>Out of Warranty Devices</span></h4>
+            {{ out_warranty_table }}
             <hr>
         </div>
         <!-- Modal to add new device -->

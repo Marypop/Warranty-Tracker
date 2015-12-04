@@ -15,4 +15,4 @@ class WarrantyApp:
 # Start the App
 if __name__ == '__main__':
     app = warApp.app
-    app.run(host='localhost', port=5555, debug=True)
+    app.run(host='localhost', port=5555)

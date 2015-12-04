@@ -3,11 +3,11 @@
 __author__ = 'shreyas'
 
 
-
-
 from pymongo import errors
 from datetime import datetime, timedelta
 from tablesUtil import *
+
+from dateutil.relativedelta import *
 
 
 class AppUserDeviceDB():
@@ -28,9 +28,9 @@ class AppUserDeviceDB():
         warrantyDate = calculate_warranty_date(self.devicePurchaseDate, self.warrantyPeriod)
 
         device = { 'device_name'    : self.deviceName,\
-                    'device_type'   : self.deviceType,\
-                    'purchase_date' : self.devicePurchaseDate,\
-                    'warranty_date' : warrantyDate }
+                   'device_type'    : self.deviceType,\
+                   'purchase_date'  : self.devicePurchaseDate,\
+                   'warranty_date'  : warrantyDate }
 
         find_query   = {'_id': self.userid}
         update_query = {'$addToSet' : {'devices': device}}
@@ -77,11 +77,41 @@ def populate_user_device_table(userid, db):
         return(None)
 
     # Once we have the devices that user has we will create the code make a table object out of it
-    table = create_user_device_objects(devices)
+    # Before creating a table we have to format data into appropriate format
+    formatted_device_data = parse_and_format_user_devices_data(devices)
+
+    table = []
+
+    table.append(create_user_device_objects(formatted_device_data[0]))
+    table.append(create_user_device_objects(formatted_device_data[1]))
 
     return(table)
 
 
+def parse_and_format_user_devices_data(devices):
+    # Here devices is list of dictionaries
+    formatted_data = []
+    in_warr_device = []
+    out_warr_device = []
+
+    today = datetime.today()
+
+    for device in devices:
+        warranty_date = device['warranty_date']
+        
+        device['purchase_date']= device['purchase_date'].strftime('%d-%m-%Y')
+        device['warranty_date']= device['warranty_date'].strftime('%d-%m-%Y')
+
+        if(warranty_date > today):
+            in_warr_device.append(device)
+        else:
+            out_warr_device.append(device)
+
+    formatted_data.append(in_warr_device)
+    formatted_data.append(out_warr_device)
+
+    # Now we need to create two parts for in warranty and out of warranty devices    
+    return(formatted_data)
 
 
 

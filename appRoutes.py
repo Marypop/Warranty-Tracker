@@ -44,7 +44,11 @@ def home():
         table = populate_user_device_table(user, db)
         template = 'user_screen.html'
 
-    return(render_template(template, table=table))
+        in_warranty_table = table[0]
+        out_warranty_table = table[1]
+
+    return(render_template(template, in_warranty_table=in_warranty_table,\
+                                     out_warranty_table=out_warranty_table))
 
 
 # Routes to Log-in existing, Register new user and logging out of the application
