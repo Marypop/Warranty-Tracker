@@ -39,4 +39,4 @@ def create_user_device_objects(devices):
 
     user_device_table = UserDeviceTable(user_device)
     return(user_device_table)
-
+    

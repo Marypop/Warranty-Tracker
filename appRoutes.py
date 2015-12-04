@@ -114,6 +114,7 @@ def usrLogout():
 
     return(response)
 
+
 # Route to update user password
 @app.route('/settings', methods=['POST'])
 def updateUsrPassword():
@@ -138,8 +139,6 @@ def updateUsrPassword():
     return(redirect(url_for('home'), code=302))
 
 
-
-
 # Routes to Add new devices for a given user
 @app.route('/addnewdevice', methods=['POST'])
 def addNewDevice():
@@ -160,5 +159,3 @@ def addNewDevice():
     appuserdevice.addNewUserDevice(db)
 
     return(redirect(url_for('home'), code=302))
-
-

@@ -112,6 +112,3 @@ def parse_and_format_user_devices_data(devices):
 
     # Now we need to create two parts for in warranty and out of warranty devices    
     return(formatted_data)
-
-
-
