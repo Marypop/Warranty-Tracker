@@ -1,4 +1,4 @@
-# warranty_tracker_webapp
+# Warranty Tracker Web Application
 This is an web application based on Flask, python and MongoDB to help individuals track the warranties for his devices at one place
 
 To run or develop further, you will have to fulfill following dependencies,
