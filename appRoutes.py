@@ -48,8 +48,11 @@ def home():
         table = populate_user_device_table(user, db)
         template = 'user_screen.html'
 
+    if table is not None:
         in_warranty_table = table[0]
         out_warranty_table = table[1]
+    else:
+        in_warranty_table = out_warranty_table = 'No Devices found'
 
     return(render_template(template, in_warranty_table=in_warranty_table,\
                                      out_warranty_table=out_warranty_table))
