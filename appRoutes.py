@@ -1,5 +1,9 @@
 #!/usr/local/bin/python3
 
+# Copyright (c) 2015 Shreyas Patil
+# The MIT License (MIT). Please refer to License.md
+
+
 __author__ = 'shreyas'
 
 # This file should contain all the routes that will be called in the warranty tracker web-application
@@ -135,7 +139,7 @@ def updateUsrPassword():
 
     if new_passwd == conf_new_passwd:
         cur_user.update_user_pwd(userid, new_passwd, db)
-        
+
     return(redirect(url_for('home'), code=302))
 
 

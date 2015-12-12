@@ -1,5 +1,10 @@
 #!/usr/local/bin/python3
 
+
+# Copyright (c) 2015 Shreyas Patil
+# The MIT License (MIT). Please refer to License.md
+
+
 __author__ = 'shreyas'
 
 
@@ -98,7 +103,7 @@ def parse_and_format_user_devices_data(devices):
 
     for device in devices:
         warranty_date = device['warranty_date']
-        
+
         device['purchase_date']= device['purchase_date'].strftime('%d-%m-%Y')
         device['warranty_date']= device['warranty_date'].strftime('%d-%m-%Y')
 
@@ -110,5 +115,5 @@ def parse_and_format_user_devices_data(devices):
     formatted_data.append(in_warr_device)
     formatted_data.append(out_warr_device)
 
-    # Now we need to create two parts for in warranty and out of warranty devices    
+    # Now we need to create two parts for in warranty and out of warranty devices
     return(formatted_data)

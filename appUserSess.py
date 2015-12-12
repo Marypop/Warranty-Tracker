@@ -1,5 +1,10 @@
 #!/usr/local/bin/python3
 
+
+# Copyright (c) 2015 Shreyas Patil
+# The MIT License (MIT). Please refer to License.md
+
+
 __author__ = 'shreyas'
 
 import os

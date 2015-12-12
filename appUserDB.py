@@ -1,5 +1,10 @@
 #!/usr/local/bin/python3
 
+
+# Copyright (c) 2015 Shreyas Patil
+# The MIT License (MIT). Please refer to License.md
+
+
 __author__ = 'shreyas'
 
 from flask import render_template, session
@@ -37,9 +42,9 @@ class AppUserDB():
         return(result)
 
 
-    def validate_user(self, userid, pwd, db): 
+    def validate_user(self, userid, pwd, db):
         usercollection = db.userdb
-        
+
         try:
             user = usercollection.find_one({'_id' : userid})
         except errors.PyMongoError as err:
