@@ -1,5 +1,10 @@
 # !/usr/local/bin/python3
 
+
+# Copyright (c) 2015 Shreyas Patil
+# The MIT License (MIT). Please refer to License.md
+
+
 __author__ ='shreyas'
 
 
@@ -39,4 +44,3 @@ def create_user_device_objects(devices):
 
     user_device_table = UserDeviceTable(user_device)
     return(user_device_table)
-    

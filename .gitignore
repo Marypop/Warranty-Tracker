@@ -1,3 +1,7 @@
+# Copyright (c) 2015 Shreyas Patil
+# The MIT License (MIT). Please refer to License.md
+
+
 #All the documents in this file are supposed to ignored
 *.zip
 *.DS_Store
