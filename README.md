@@ -16,3 +16,4 @@ To run or develop further, you will have to fulfill following dependencies,
  
  At present, application does not show any errors or flash messages on bad user input or some other unexpected workflows, which is one
  of the areas for improvement, as well as a functionality to delete to the devices from the user profile and pagination.
+
