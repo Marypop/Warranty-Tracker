@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.6/sandstone/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="custom.less" type='text/css'>
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+	<nav class="navbar navbar-default navbar-inverse" role="navigation">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">TEST</a>
+		</div>
+	</nav>
+
+	<div class="col-sm-offset-4">
+		<div class="col-md-6 panel panel-default">
+			<div class="panel-body">
+				<div role="tabpanel">
+					<!-- Nav tabs -->
+					<div class="panel-heading">
+						<img src="http://placehold.it/390x150" alt="" />
+					</div>
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active">
+							<a href='#login' aria-controls="login" role="tab" data-toggle="tab">Login</a>
+						</li>
+						<li role="presentation">
+							<a href='#register' aria-controls="register" role="tab" data-toggle="tab">Register</a>
+						</li>
+					</ul>
+
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="login">
+							<hr>
+							<!-- Create a form here to accept username and password -->
+							<form action="/login" method='post' name='login_form'>
+
+								<div class='row'>
+									<div class='form-group col-md-12'>
+										<label for="usrEmail" class='control-label'>Email</label>
+										<input class='form-control' type="email" name="email" id="usremail" placeholder="Enter your address">
+									</div>
+								</div>
+								<div class='row'>
+									<div class='form-group col-md-12'>
+										<label for="usrPasswd" class='control-label'>Password</label>
+										<input class='form-control' type="password" name="passwd" id="usrpasswd" placeholder="Enter your password">
+									</div>
+								</div>
+								<hr>
+								<div class='row'>
+									<div class='col-sm-2'>
+										<button type="submit" class="btn btn-primary">
+											<span class="glyphicon glyphicon-log-in"></span> Login
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="register">
+							<hr>
+							<!-- Create a form here to register a user with email and password -->
+							<form action='register' method='post'>
+								<div class='row'>
+									<div class='form-group col-md-12'>
+										<label for="usrEmail" class='control-label'>Email</label>
+										<input class='form-control' type="email" name="email" id="usremail" placeholder="Enter your address">
+									</div>
+								</div>
+								<div class='row'>
+									<div class='form-group col-md-12'>
+										<label for="usrPasswd" class='control-label'>Password</label>
+										<input class='form-control' type="password" name="passwd" id="usrpasswd" placeholder="Enter your password">
+									</div>
+								</div>
+								<div class='row'>
+									<div class='form-group col-md-12'>
+										<label for='confPasswd' class='control-label'>Confirm Password</label>
+										<input class='form-control' type="password" name="cnfpasswd" id="confpasswd" placeholder="Confirm your password">
+									</div>
+								</div>
+								<hr>
+								<div class='row'>
+									<div class='col-sm-2'>
+										<button type="submit" class="btn btn-primary">
+											<span class="glyphicon glyphicon-pencil"></span> Register
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<!-- Include all compiled plugins (below), or include individual files as needed -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+
+</html>
