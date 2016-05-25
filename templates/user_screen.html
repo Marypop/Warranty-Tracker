@@ -9,7 +9,7 @@
 		<link href='https://fonts.googleapis.com/css?family=Cabin:500' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <nav class="navbar navbar-default">
+        <nav class="navbar navbar-default navbar-inverse">
             <div class="container-fluid">
                 <!-- Brand header for the website -->
                 <div class="navbar-header">
@@ -19,30 +19,32 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><b>TRACK-A-RANTY</b></a>
+                    <a class="navbar-brand" href="#">
+						<b class='brand-text'>TRACK-A-RANTY</b>
+					</a>
                 </div>
                 <!-- End of brand header for the website -->
                 <!-- Add device button -->
                 <div class='navbar-header'>
                     <form class='navbar-form'>
-                        <a type="button" data-toggle='modal' data-target='#adddevice' class="btn">
-							<i class="fa fa-plus">Add a device</i>
+                        <a type="button" data-toggle='modal' data-target='#adddevice' class="btn btn-default">
+							<i class="fa fa-plus"> Add a device</i>
 						</a>
                     </form>
                 </div>
                 <!-- End of Add device button -->
                 <!-- Buttons for Settings and Logging out a User -->
-                <div class='nav navbar-nav navbar-right'>
+                <div class='nav navbar-nav navbar-inverse navbar-right'>
                     <form class='navbar-form' action='logout' method='post'>
                         <button type="submit" class="btn btn-danger">
-							<span class="fa fa-sign-out">Logout</span>
+							<span class="fa fa-sign-out"> Logout</span>
 						</button>
                     </form>
                 </div>
                 <div class='nav navbar-nav navbar-right'>
                     <form class='navbar-form'>
                         <button type="button" class="btn btn-success" data-toggle='modal' data-target='#settings'>
-							<span class="fa fa-gear">Settings</span>
+							<span class="fa fa-gear"> Settings</span>
 						</button>
                     </form>
                 </div>
@@ -141,4 +143,5 @@
     <!-- Latest compiled and minified CSS -->
     <script src="{{ url_for('static', filename='js/jquery.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}" media="screen" title="no title" charset="utf-8">
 </html>
